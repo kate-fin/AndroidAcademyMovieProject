@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dimenShift">16dp</dimen>
+    <dimen name="dimenShiftBig">30dp</dimen>
+    <dimen name="dimenShiftBtwObjects">8dp</dimen>
+    <dimen name="dimenBoxSize">64dp</dimen>
+    <dimen name="dimenBottomPanelSize">96dp</dimen>
+    <dimen name="dimenPadding">8dp</dimen>
+    <dimen name="dimenTextSize">14sp</dimen>
+    <dimen name="dimenTextTitle">40sp</dimen>
+    <dimen name="dimenTitleTop">254dp</dimen>
+    <dimen name="dimenSmallSize">12sp</dimen>
+    <dimen name="dimenRatingMarginBottom">56dp</dimen>
+    <dimen name="dimenArrowBackTop">59dp</dimen>
+    <dimen name="dimenBottomSpace">100dp</dimen>
+</resources>

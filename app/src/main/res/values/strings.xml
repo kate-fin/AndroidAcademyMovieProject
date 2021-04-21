@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">AndroidAcademyMovieProject</string>
+    <string name="welcome">Welcome</string>
+    <string name="triangle">Triangle</string>
+    <string name="square">Square</string>
+    <string name="circle">Circle</string>
+    <string name="welcome_land" translatable="false">Welcome Land</string>
+    <string name="text_second_activity" translatable="false">This is second activity. We get: </string>
+    <string name="box_one" translatable="false">Box One</string>
+    <string name="box_two" translatable="false">Box Two</string>
+    <string name="box_three" translatable="false">BoxThree</string>
+    <string name="box_four" translatable="false">BoxFour</string>
+    <string name="box_five" translatable="false">BoxFive</string>
+    <string name="red" translatable="false">Red</string>
+    <string name="yellow" translatable="false">Yellow</string>
+    <string name="green" translatable="false">Green</string>
+    <string name="avengers_n_end_game" translatable="false">Avengers:\nEnd Game</string>
+    <string name="rating" translatable="false">13+</string>
+    <string name="arrow" translatable="false"><![CDATA[<]]></string>
+    <string name="back" translatable="false">Back</string>
+    <string name="action_adventure_fantasy" translatable="false">Action, Adventure, Fantasy</string>
+    <string name="count_reviews" translatable="false">125 Reviews</string>
+    <string name="storyline" translatable="false">Storyline</string>
+    <string name="after_the_devastating" translatable="false">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
+    <string name="cast">Cast</string>
+    <string name="robert_downey_jr">Robert Downey Jr.</string>
+    <string name="chris_hemsworth">Chris Hemsworth</string>
+    <string name="mark_ruffalo">Mark Ruffalo</string>
+    <string name="chris_evans">Chris Evans</string>
+</resources>

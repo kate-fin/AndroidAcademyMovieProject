@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <dimen name="spacing_0_5x">2dp</dimen>
+    <dimen name="spacing_1x">4dp</dimen>
+    <dimen name="spacing_2x">8dp</dimen>
+    <dimen name="spacing_2_5x">10dp</dimen>
+    <dimen name="spacing_3x">12dp</dimen>
+    <dimen name="spacing_3_5x">14dp</dimen>
+    <dimen name="spacing_4x">16dp</dimen>
+    <dimen name="spacing_4_5x">18dp</dimen>
+    <dimen name="spacing_6x">24dp</dimen>
+    <dimen name="spacing_13x">52dp</dimen>
+    <dimen name="spacing_14x">56dp</dimen>
+
+
+<!--    Dimens for movie details-->
     <dimen name="dimenShift">16dp</dimen>
     <dimen name="dimenShiftBig">30dp</dimen>
     <dimen name="dimenShiftBtwObjects">8dp</dimen>
     <dimen name="dimenBoxSize">64dp</dimen>
     <dimen name="dimenBottomPanelSize">96dp</dimen>
     <dimen name="dimenPadding">8dp</dimen>
-    <dimen name="dimenTextSize">14sp</dimen>
-    <dimen name="dimenTextTitle">40sp</dimen>
     <dimen name="dimenTitleTop">254dp</dimen>
-    <dimen name="dimenSmallSize">12sp</dimen>
     <dimen name="dimenRatingMarginBottom">56dp</dimen>
     <dimen name="dimenArrowBackTop">59dp</dimen>
     <dimen name="dimenBottomSpace">100dp</dimen>
+
+
+    <dimen name="text_size_title">40sp</dimen>
+    <dimen name="text_size_sub_title">14sp</dimen>
+    <dimen name="text_size_body">12sp</dimen>
+    <dimen name="text_size_description">8sp</dimen>
+
+
+    <!--    Dimens for movies list-->
+    <dimen name="movie_card_top_margin">44dp</dimen>
+    <dimen name="movie_card_width">170dp</dimen>
+    <dimen name="favourite_width">16dp</dimen>
+    <dimen name="favourite_height">14dp</dimen>
+    <dimen name="target_size">16dp</dimen>
+    <dimen name="arrow_size">14dp</dimen>
+
+
+    <dimen name="text_size_headline">40sp</dimen>
+
+    <dimen name="movie_logo_image_height">298dp</dimen>
+
+    <!-- Movies List screen -->
+    <dimen name="movies_list_card_width">170dp</dimen>
+    <dimen name="movies_list_card_corners">8dp</dimen>
+    <dimen name="movies_list_top_margin">102dp</dimen>
+    <dimen name="movies_list_allowed_age_space">24dp</dimen>
+    <dimen name="movies_list_allowed_age_corners">5dp</dimen>
+    <dimen name="movies_list_favorite_icon_space">24dp</dimen>
+    <dimen name="movies_list_rating_star_icon_space">8dp</dimen>
+    <!-- Movies List screen -->
 </resources>

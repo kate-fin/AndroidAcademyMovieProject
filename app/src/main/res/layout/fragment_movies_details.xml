@@ -15,33 +15,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@mipmap/pic_movie_back"
+            android:src="@drawable/pic_movie_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/arrow"
+        <LinearLayout
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimenShift"
             android:layout_marginTop="@dimen/dimenArrowBackTop"
-            android:text="@string/arrow"
-            android:textColor="@color/colorSmallText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <View
+                android:id="@+id/arrow"
+                android:layout_width="@dimen/arrow_size"
+                android:layout_height="@dimen/arrow_size"
+                android:background="@drawable/ic_back"
+                android:backgroundTint="@color/colorSmallText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimenShiftBtwObjects"
-            android:layout_marginTop="@dimen/dimenArrowBackTop"
-            android:text="@string/back"
-            android:textColor="@color/colorSmallText"
-            android:textSize="@dimen/dimenSmallSize"
-            app:layout_constraintStart_toEndOf="@id/arrow"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimenShiftBtwObjects"
+                android:text="@string/back"
+                android:textColor="@color/colorSmallText"
+                android:textSize="@dimen/text_size_body"
+                app:layout_constraintStart_toEndOf="@id/arrow"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +56,7 @@
             android:layout_marginBottom="@dimen/dimenRatingMarginBottom"
             android:text="@string/rating"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/dimenSmallSize"
+            android:textSize="@dimen/text_size_body"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/pic_movie_back"
             app:layout_constraintStart_toStartOf="parent" />
@@ -63,9 +69,8 @@
             android:layout_marginTop="@dimen/dimenTitleTop"
             android:text="@string/avengers_n_end_game"
             android:textColor="@color/colorTextTitle"
-            android:textSize="@dimen/dimenTextTitle"
+            android:textSize="@dimen/text_size_title"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,6 +81,7 @@
             android:layout_marginHorizontal="@dimen/dimenShift"
             android:layout_marginBottom="@dimen/dimenShiftBtwObjects"
             android:text="@string/action_adventure_fantasy"
+            android:textSize="@dimen/text_size_sub_title"
             android:textColor="@color/colorDescriptionGenre"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nameMovie" />
@@ -86,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimenShift"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_red_star_icon"
+            android:src="@drawable/pic_red_star_icon"
             app:layout_constraintEnd_toStartOf="@+id/star2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_red_star_icon"
+            android:src="@drawable/pic_red_star_icon"
             app:layout_constraintEnd_toStartOf="@+id/star3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/star1"
@@ -110,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_red_star_icon"
+            android:src="@drawable/pic_red_star_icon"
             app:layout_constraintEnd_toStartOf="@+id/star4"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/star2"
@@ -122,7 +128,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_red_star_icon"
+            android:src="@drawable/pic_red_star_icon"
             app:layout_constraintEnd_toStartOf="@+id/star5"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/star3"
@@ -134,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_grey_star_icon"
+            android:src="@drawable/pic_grey_star_icon"
             app:layout_constraintEnd_toStartOf="@+id/count_review"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/star4"
@@ -145,10 +151,10 @@
             android:id="@+id/count_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimenShiftBtwObjects"
+            android:layout_marginTop="@dimen/spacing_1x"
             android:text="@string/count_reviews"
             android:textColor="@color/colorSmallText"
-            android:textSize="@dimen/dimenSmallSize"
+            android:textSize="@dimen/text_size_sub_title"
             android:textStyle="bold"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/star5"
@@ -158,12 +164,13 @@
             android:id="@+id/storyline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimenShift"
+            android:layout_marginStart="@dimen/dimenShift"
             android:layout_marginTop="@dimen/dimenShiftBig"
             android:text="@string/storyline"
             android:textColor="@color/colorTextTitle"
-            android:textSize="@dimen/dimenTextSize"
+            android:textSize="@dimen/text_size_sub_title"
             android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/star1" />
 
         <TextView
@@ -174,7 +181,9 @@
             android:layout_marginTop="@dimen/dimenShiftBig"
             android:text="@string/after_the_devastating"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/dimenTextSize"
+            android:textSize="@dimen/text_size_sub_title"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/storyline" />
 
         <TextView
@@ -185,8 +194,9 @@
             android:layout_marginTop="@dimen/dimenShiftBig"
             android:text="@string/cast"
             android:textColor="@color/colorTextTitle"
-            android:textSize="@dimen/dimenTextSize"
+            android:textSize="@dimen/text_size_sub_title"
             android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description" />
 
         <ImageView
@@ -195,7 +205,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/dimenShift"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_actor_1"
+            android:src="@drawable/pic_actor_1"
             app:layout_constraintDimensionRatio="1,1"
             app:layout_constraintEnd_toStartOf="@+id/second_actor"
             app:layout_constraintHorizontal_bias="0.5"
@@ -213,6 +223,7 @@
             android:text="@string/robert_downey_jr"
             android:textColor="@color/colorCastName"
             android:textStyle="bold"
+            android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/first_actor"
             app:layout_constraintEnd_toStartOf="@+id/second_actor_text"
@@ -227,7 +238,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/dimenShiftBtwObjects"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_actor_2"
+            android:src="@drawable/pic_actor_2"
             app:layout_constraintDimensionRatio="1,1"
             app:layout_constraintEnd_toStartOf="@+id/third_actor"
             app:layout_constraintHorizontal_bias="0.5"
@@ -245,6 +256,7 @@
             android:text="@string/chris_evans"
             android:textColor="@color/colorCastName"
             android:textStyle="bold"
+            android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/first_actor"
             app:layout_constraintEnd_toStartOf="@+id/third_actor_text"
@@ -258,7 +270,7 @@
             android:layout_height="0dp"
             android:layout_marginStart="@dimen/dimenShiftBtwObjects"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
-            android:src="@mipmap/pic_actor_3"
+            android:src="@drawable/pic_actor_3"
             app:layout_constraintDimensionRatio="1,1"
             app:layout_constraintEnd_toStartOf="@+id/forth_actor"
             app:layout_constraintHorizontal_bias="0.5"
@@ -276,6 +288,7 @@
             android:text="@string/mark_ruffalo"
             android:textColor="@color/colorCastName"
             android:textStyle="bold"
+            android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/first_actor"
             app:layout_constraintEnd_toStartOf="@+id/forth_actor_text"
@@ -290,7 +303,7 @@
             android:layout_marginStart="@dimen/dimenShiftBtwObjects"
             android:layout_marginTop="@dimen/dimenShiftBtwObjects"
             android:layout_marginEnd="@dimen/dimenShift"
-            android:src="@mipmap/pic_actor_4"
+            android:src="@drawable/pic_actor_4"
             app:layout_constraintDimensionRatio="1,1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -309,6 +322,7 @@
             android:text="@string/chris_hemsworth"
             android:textColor="@color/colorCastName"
             android:textStyle="bold"
+            android:textSize="@dimen/text_size_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

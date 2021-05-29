@@ -3,11 +3,13 @@ package com.example.androidacademymovieproject
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.androidacademymovieproject.model.Movie
+import com.example.androidacademymovieproject.view.FragmentMovieDetails
+import com.example.androidacademymovieproject.view.FragmentMoviesList
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
     FragmentMovieDetails.ClickListener {
 
-    lateinit var shownFragment: Fragment
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -15,21 +17,30 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
         if (savedInstanceState == null) {
             showMoviesList()
         }
+
     }
 
     private fun showMoviesList() {
         supportFragmentManager.beginTransaction()
             .apply {
-                replace(R.id.main_frame_layout, FragmentMoviesList())
+                replace(
+                    R.id.main_frame_layout,
+                    FragmentMoviesList(),
+                    FragmentMoviesList::class.java.simpleName
+                )
                     .addToBackStack("${FragmentMoviesList()}")
                     .commit()
             }
     }
 
-    override fun showMovieDetails() {
+    override fun showMovieDetails(data: Movie) {
         supportFragmentManager.beginTransaction()
             .apply {
-                replace(R.id.main_frame_layout, FragmentMovieDetails())
+                replace(
+                    R.id.main_frame_layout,
+                    FragmentMovieDetails.newInstance(data),
+                    FragmentMovieDetails::class.java.simpleName
+                )
                     .addToBackStack("${FragmentMovieDetails()}")
                     .commit()
             }
@@ -38,6 +49,4 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
     override fun closeMovieDetails() {
         supportFragmentManager.popBackStack()
     }
-
-
 }

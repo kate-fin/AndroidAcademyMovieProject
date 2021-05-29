@@ -25,7 +25,7 @@
     <dimen name="dimenRatingMarginBottom">56dp</dimen>
     <dimen name="dimenArrowBackTop">59dp</dimen>
     <dimen name="dimenBottomSpace">100dp</dimen>
-
+    <dimen name="actor_card_width">80dp</dimen>
 
     <dimen name="text_size_title">40sp</dimen>
     <dimen name="text_size_sub_title">14sp</dimen>
@@ -40,6 +40,7 @@
     <dimen name="favourite_height">14dp</dimen>
     <dimen name="target_size">16dp</dimen>
     <dimen name="arrow_size">14dp</dimen>
+    <dimen name="bottom_space">100dp</dimen>
 
 
     <dimen name="text_size_headline">40sp</dimen>
@@ -47,7 +48,7 @@
     <dimen name="movie_logo_image_height">298dp</dimen>
 
     <!-- Movies List screen -->
-    <dimen name="movies_list_card_width">170dp</dimen>
+
     <dimen name="movies_list_card_corners">8dp</dimen>
     <dimen name="movies_list_top_margin">102dp</dimen>
     <dimen name="movies_list_allowed_age_space">24dp</dimen>

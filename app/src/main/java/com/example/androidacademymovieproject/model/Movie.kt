@@ -3,14 +3,16 @@ package com.example.androidacademymovieproject.model
 import java.io.Serializable
 
 data class Movie (
-    val image: Int,
+    val id: Int,
+    val imageCardUrl: String,
     val name: String,
-    val genre: String,
-    val rating: String,
-    val countReviews: String,
-    val duration: String,
+    val genres: List<Genre>,
+    val rating: Int,
+    val countReviews: Int,
+    val imageDetailsUrl: String,
+    val duration: Int,
     val storyLine: String,
-    val actors: List<Actor>
-//    val countStars: String,
-//    val like: Boolean
-): Serializable
+    val actors: List<Actor>,
+    val countStars: Int,
+    val isLiked: Boolean
+)//: Serializable

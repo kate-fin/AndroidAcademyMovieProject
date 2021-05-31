@@ -6,16 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidacademymovieproject.model.Data
 import com.example.androidacademymovieproject.R
+import com.example.androidacademymovieproject.data.JsonMovieRepository
 import com.example.androidacademymovieproject.model.Movie
 import com.example.androidacademymovieproject.presenter.MovieAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FragmentMoviesList : Fragment() {
 
     var clickListener: ClickListener? = null
+    private val ioScope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -25,26 +31,24 @@ class FragmentMoviesList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_movie)
-        recyclerView.adapter =
-            MovieAdapter(Data.getData()) { movieData ->
-                clickListener?.showMovieDetails(movieData)
-            }
         val spanCount = 2
         recyclerView.layoutManager = GridLayoutManager(view.context, spanCount)
+        loadDataToAdapter(recyclerView)
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        view?.findViewById<View>(R.id.movie_card)?.apply {
-//            setOnClickListener {
-//                clickListener?.showMovieDetails()
-//            }
-//        }
-//    }
+    private fun loadDataToAdapter(recyclerView: RecyclerView) {
+        lifecycleScope.launch {//ioScope
+            val movies = JsonMovieRepository(requireContext()).loadMovies()
+            recyclerView.adapter =
+                MovieAdapter(movies) { movie ->
+                    clickListener?.showMovieDetails(movie)
+                }
+        }
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ClickListener){
+        if (context is ClickListener) {
             clickListener = context
         }
     }
@@ -55,6 +59,6 @@ class FragmentMoviesList : Fragment() {
     }
 
     interface ClickListener {
-        fun showMovieDetails(data: Movie)
+        fun showMovieDetails(movieId: Int)
     }
 }

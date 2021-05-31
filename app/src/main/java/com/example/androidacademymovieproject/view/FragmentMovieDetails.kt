@@ -7,17 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.androidacademymovieproject.R
+import com.example.androidacademymovieproject.data.JsonMovieRepository
 import com.example.androidacademymovieproject.model.Movie
 import com.example.androidacademymovieproject.presenter.ActorAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class FragmentMovieDetails : Fragment() {
 
-    var clickListener: ClickListener? = null
+    private var clickListener: ClickListener? = null
+    private val ioScope = CoroutineScope(Dispatchers.IO)
+    private val uiScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,35 +36,65 @@ class FragmentMovieDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val movie: Movie = arguments?.get(DATA_KEY) as? Movie ?: return
-        fillData(movie)
+        val movieId: Int = arguments?.get(DATA_KEY) as Int
         val recycler = view.findViewById<RecyclerView>(R.id.recycler_view_actor)
-        recycler.adapter = ActorAdapter(movie.actors)
+        actionWithMovie(movieId, recycler)
         recycler.layoutManager = LinearLayoutManager(view.context, RecyclerView.HORIZONTAL, false)
         view.findViewById<View>(R.id.back_button)?.apply {
-            setOnClickListener{
+            setOnClickListener {
                 clickListener?.closeMovieDetails()
             }
         }
     }
 
-    private fun fillData(movie: Movie) {
-        view?.findViewById<TextView>(R.id.rating)?.text = movie.rating
-        view?.findViewById<TextView>(R.id.name_movie)?.text = movie.name
-        view?.findViewById<TextView>(R.id.genre_movie)?.text = movie.genre
-        view?.findViewById<TextView>(R.id.count_review)?.text = movie.countReviews
-        view?.findViewById<TextView>(R.id.description)?.text = movie.storyLine
-//        view?.findViewById<ImageView>(R.id.pic_movie_back)?.setImageResource(movie.image)
+    private fun actionWithMovie(id: Int, recyclerView: RecyclerView) {
+        lifecycleScope.launch {//ioScope
+            val movie = JsonMovieRepository(requireContext()).loadMovie(id)
+            if (movie != null) {
+                fillData(movie)
+                recyclerView.adapter = ActorAdapter(movie.actors)
+            } else {
+                showErrorToast()
+            }
+        }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//
-//    }
+    private fun showErrorToast() {
+        lifecycleScope.launch {//uiScope
+            Toast.makeText(
+                context, "Проблемы с загрузкой фильма. Попробуйте позже",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    private fun showBackPic(picUrl: String){
+        lifecycleScope.launch {//uiScope
+            view?.let {
+                view?.findViewById<ImageView>(R.id.pic_movie_back)?.let { it1 ->
+                    Glide.with(it).load(picUrl).error(R.drawable.pic_movie_back)
+                        .into(it1)
+                }
+            }
+        }
+    }
+
+    private fun fillData(movie: Movie) {
+        showBackPic(movie.imageDetailsUrl)
+        view?.findViewById<TextView>(R.id.rating)?.text =
+            context?.getString(R.string.movie_rating, movie.rating)
+        view?.findViewById<TextView>(R.id.name_movie)?.text = movie.name
+        view?.findViewById<TextView>(R.id.genre_movie)?.text =
+            movie.genres.joinToString(", ") { it.name }
+        view?.findViewById<TextView>(R.id.count_review)?.text =
+            context?.getString(R.string.movie_count_reviews, movie.countReviews)
+        view?.findViewById<TextView>(R.id.description)?.text = movie.storyLine
+    }
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ClickListener){
+        if (context is ClickListener) {
             clickListener = context
         }
     }
@@ -65,23 +104,15 @@ class FragmentMovieDetails : Fragment() {
         clickListener = null
     }
 
-    interface ClickListener{
+    interface ClickListener {
         fun closeMovieDetails()
     }
 
-    companion object{
-        private const val DATA_KEY = "MOVIE_DATA"
-        fun newInstance(movie: Movie)//: FragmentMovieDetails{
-//            val bundle = bundleOf(
-//                DATA_KEY to movie
-//            )
-//            val frag = FragmentMovieDetails()
-//            frag.arguments = bundle
-//            return frag
-//        }
-                = FragmentMovieDetails().also {
+    companion object {
+        private const val DATA_KEY = "MOVIE_ID"
+        fun newInstance(movieId: Int) = FragmentMovieDetails().also {
             val args = bundleOf(
-                DATA_KEY to movie
+                DATA_KEY to movieId
             )
             it.arguments = args
         }

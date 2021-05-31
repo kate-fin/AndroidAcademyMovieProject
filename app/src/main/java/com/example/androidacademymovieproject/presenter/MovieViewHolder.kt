@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.androidacademymovieproject.R
 import com.example.androidacademymovieproject.model.Movie
 
@@ -18,15 +19,22 @@ class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     //    val countStars = itemView.findViewById<Te>()
 //    val like
-    fun bind(movie: Movie, clickedCard:(item: Movie) -> Unit) {
-        image.setImageResource(movie.image)
+    fun bind(movie: Movie, clickedCard: (itemId: Int) -> Unit) {
+        Glide.with(itemView)
+            .load(movie.imageCardUrl)
+            .error(R.drawable.pic_movie_back_card)
+            .placeholder(R.drawable.pic_movie_back_card)
+            .into(image)
         name.text = movie.name
-        genre.text = movie.genre
-        rating.text = movie.rating
-        countReviews.text = movie.countReviews
-        duration.text = movie.duration
+        genre.text = movie.genres.joinToString(", ") { it.name }
+        itemView.context.apply {
+            rating.text = getString(R.string.movie_rating, movie.rating)
+            countReviews.text = getString(R.string.movie_count_reviews, movie.countReviews)
+            duration.text = getString(R.string.movie_duration, movie.duration)
+        }
+
         itemView.setOnClickListener {
-            clickedCard(movie)
+            clickedCard(movie.id)
         }
     }
 }

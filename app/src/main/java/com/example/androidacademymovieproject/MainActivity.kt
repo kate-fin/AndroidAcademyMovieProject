@@ -8,13 +8,14 @@ import com.example.androidacademymovieproject.view.FragmentMovieDetails
 import com.example.androidacademymovieproject.view.FragmentMoviesList
 
 class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
-    FragmentMovieDetails.ClickListener {
+    FragmentMovieDetails.ClickListener
+{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (savedInstanceState == null) {
+                if (savedInstanceState == null) {
             showMoviesList()
         }
 
@@ -33,12 +34,12 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
             }
     }
 
-    override fun showMovieDetails(data: Movie) {
+    override fun showMovieDetails(movieId: Int) {
         supportFragmentManager.beginTransaction()
             .apply {
                 replace(
                     R.id.main_frame_layout,
-                    FragmentMovieDetails.newInstance(data),
+                    FragmentMovieDetails.newInstance(movieId),
                     FragmentMovieDetails::class.java.simpleName
                 )
                     .addToBackStack("${FragmentMovieDetails()}")
@@ -49,4 +50,5 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
     override fun closeMovieDetails() {
         supportFragmentManager.popBackStack()
     }
+
 }

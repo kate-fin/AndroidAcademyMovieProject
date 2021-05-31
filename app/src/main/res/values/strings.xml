@@ -15,11 +15,9 @@
     <string name="yellow" translatable="false">Yellow</string>
     <string name="green" translatable="false">Green</string>
     <string name="avengers_n_end_game" translatable="false">Avengers:\nEnd Game</string>
-    <string name="rating" translatable="false">13+</string>
     <string name="arrow" translatable="false"><![CDATA[<]]></string>
     <string name="back" translatable="false">Back</string>
     <string name="action_adventure_fantasy" translatable="false">Action, Adventure, Fantasy</string>
-    <string name="count_reviews" translatable="false">125 REVIEWS</string>
     <string name="storyline" translatable="false">Storyline</string>
     <string name="after_the_devastating" translatable="false">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos\' actions and restore balance to the universe.</string>
     <string name="cast">Cast</string>
@@ -28,7 +26,9 @@
     <string name="mark_ruffalo">Mark Ruffalo</string>
     <string name="chris_evans">Chris Evans</string>
     <string name="avengers_end_game">Avengers: End Game</string>
-    <string name="_137_min">137 MIN</string>
+    <string name="movie_rating">%d+</string>
+    <string name="movie_count_reviews">%d Reviews</string>
+    <string name="movie_duration">%d MIN</string>
 
 
 
@@ -37,12 +37,12 @@
     <string name="movies_list_header_text">Movies app</string>
     <string name="movies_list_header_icon_description">Target icon</string>
     <string name="movies_list_header_image_description">Avengers poster</string>
-    <string name="movies_list_allowed_age">13+</string>
+
     <string name="movies_list_film_genre">Action, Adventure, Fantasy</string>
     <string name="movies_list_rating_bar_description">Rating bar</string>
-    <string name="movies_list_reviews_counter">125 Reviews</string>
+
     <string name="movies_list_film_name">Avengers: End Game</string>
-    <string name="movies_list_film_time">137 MIN</string>
+
     <!-- Movies list screen -->
 
     <!-- Movie Details screen -->
@@ -52,8 +52,6 @@
     <string name="storyline_title">Storyline</string>
     <string name="cast_title">Cast</string>
 
-    <string name="age_restrictions">13+</string>
-    <string name="reviews_count">125 Reviews</string>
     <string name="movie_cast_1_name">Robert Downey Jr.</string>
     <string name="movie_cast_2_name">Chris Evans</string>
     <string name="movie_cast_3_name">Mark Ruffalo</string>

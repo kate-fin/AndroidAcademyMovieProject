@@ -1,6 +1,7 @@
 package com.example.androidacademymovieproject.view
 
 import android.content.Context
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -89,6 +90,19 @@ class FragmentMovieDetails : Fragment() {
         view?.findViewById<TextView>(R.id.count_review)?.text =
             context?.getString(R.string.movie_count_reviews, movie.countReviews)
         view?.findViewById<TextView>(R.id.description)?.text = movie.storyLine
+        val stars: List<ImageView?> = listOf(
+            view?.findViewById(R.id.star1),
+            view?.findViewById(R.id.star2),
+            view?.findViewById(R.id.star3),
+            view?.findViewById(R.id.star4),
+            view?.findViewById(R.id.star5)
+        )
+        for (i in 0 until movie.countStars){
+            stars[i]?.setImageResource(R.drawable.pic_red_star_icon)
+        }
+        if(movie.actors.isEmpty()){
+            view?.findViewById<TextView>(R.id.cast)?.visibility = View.GONE
+        }
     }
 
 

@@ -5,6 +5,6 @@
     >
 
     <solid android:color="@color/background_color" />
-    <corners android:radius="@dimen/movies_list_allowed_age_corners" />
+    <corners android:radius="10dp" />
 
 </shape>

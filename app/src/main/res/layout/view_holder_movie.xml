@@ -8,7 +8,9 @@
     android:layout_marginStart="@dimen/spacing_3_5x"
     android:layout_marginTop="@dimen/spacing_4_5x"
     android:layout_width="@dimen/movie_card_width"
-    tools:background="@color/movie_back">
+    android:background="@drawable/shape_heavy_rounded_rect_background_dark_blue"
+    android:elevation="@dimen/spacing_0_5x"
+    app:layout_constrainedWidth="true">
 
     <ImageView
         android:id="@+id/pic_movie_back_card"
@@ -17,6 +19,7 @@
         android:layout_height="0dp"
         android:layout_width="match_parent"
         android:src="@drawable/pic_movie_back_card"
+        app:layout_constraintDimensionRatio="1:1.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,8 +53,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:background="@drawable/ic_favorite"
+    <ImageView
+        android:id="@+id/like"
+        android:src="@drawable/ic_favorite"
         android:layout_height="@dimen/favourite_height"
         android:layout_marginEnd="@dimen/spacing_2x"
         android:layout_marginTop="@dimen/spacing_3_5x"
@@ -79,7 +83,7 @@
         android:layout_marginStart="@dimen/spacing_2x"
         android:layout_marginTop="@dimen/spacing_2x"
         android:layout_width="wrap_content"
-        android:src="@drawable/pic_red_star_icon"
+        android:src="@drawable/pic_grey_star_icon"
         app:layout_constraintBottom_toBottomOf="@id/pic_movie_back_card"
         app:layout_constraintEnd_toStartOf="@+id/star2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -91,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_2x"
         android:layout_width="wrap_content"
-        android:src="@drawable/pic_red_star_icon"
+        android:src="@drawable/pic_grey_star_icon"
         app:layout_constraintBottom_toBottomOf="@id/pic_movie_back_card"
         app:layout_constraintEnd_toStartOf="@+id/star3"
         app:layout_constraintHorizontal_bias="0.5"
@@ -103,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_2x"
         android:layout_width="wrap_content"
-        android:src="@drawable/pic_red_star_icon"
+        android:src="@drawable/pic_grey_star_icon"
         app:layout_constraintBottom_toBottomOf="@id/pic_movie_back_card"
         app:layout_constraintEnd_toStartOf="@+id/star4"
         app:layout_constraintHorizontal_bias="0.5"
@@ -115,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_2x"
         android:layout_width="wrap_content"
-        android:src="@drawable/pic_red_star_icon"
+        android:src="@drawable/pic_grey_star_icon"
         app:layout_constraintBottom_toBottomOf="@id/pic_movie_back_card"
         app:layout_constraintEnd_toStartOf="@+id/star5"
         app:layout_constraintHorizontal_bias="0.5"

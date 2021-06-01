@@ -16,10 +16,10 @@
 <!--    <color name="gray_light">#D8D8D8</color>-->
 <!--    <color name="gray_dark">#6D6D80</color>-->
 
-<!--    <color name="pink_light">#FF3365</color>-->
+    <color name="pink_light">#FF3365</color>
 <!--    <color name="pink_dark">#FF3466</color>-->
 
-    <color name="background_color">#191926</color>
+    <color name="background_color">#11111B</color>
 <!--    <color name="background_card_color">#222232</color>-->
 <!--    <color name="stroke_card_color">#636375</color>-->
 </resources>

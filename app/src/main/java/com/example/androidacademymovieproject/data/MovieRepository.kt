@@ -8,6 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.*
 import kotlinx.serialization.json.*
+import kotlin.random.Random
 
 interface MovieRepository {
     suspend fun loadMovies(): List<Movie>
@@ -90,7 +91,10 @@ internal class JsonMovieRepository(private val context: Context) : MovieReposito
                 actors = jsonMovie.actors.map { id ->
                     actorsMap[id].orThrow { IllegalArgumentException("Actor not found") }
                 },
-                isLiked = false
+                isLiked = when ((0..2).random()) {
+                    0 -> false
+                    else -> true
+                }
             )
         }
     }

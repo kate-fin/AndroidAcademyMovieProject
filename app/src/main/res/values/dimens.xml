@@ -22,15 +22,16 @@
 
 <!--    Dimens for movie details-->
     <dimen name="title_top">254dp</dimen>
-    <dimen name="bottom_space">100dp</dimen>
+    <dimen name="bottom_space">20dp</dimen>
     <dimen name="actor_card_width">80dp</dimen>
 
 <!--    Dimens for movies list-->
-    <dimen name="movie_card_top_margin">44dp</dimen>
+    <dimen name="movie_card_top_margin">20dp</dimen>
     <dimen name="movie_card_width">170dp</dimen>
     <dimen name="favourite_width">16dp</dimen>
     <dimen name="favourite_height">14dp</dimen>
     <dimen name="target_size">16dp</dimen>
     <dimen name="arrow_size">14dp</dimen>
+    <dimen name="movies_list_allowed_age_corners">5dp</dimen>
 
 </resources>

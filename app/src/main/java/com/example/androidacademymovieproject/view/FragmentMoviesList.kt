@@ -1,6 +1,7 @@
 package com.example.androidacademymovieproject.view
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,7 +32,8 @@ class FragmentMoviesList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view_movie)
-        val spanCount = 2
+        val spanCount =
+            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) 2 else 4
         recyclerView.layoutManager = GridLayoutManager(view.context, spanCount)
         loadDataToAdapter(recyclerView)
     }

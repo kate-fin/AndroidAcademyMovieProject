@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.androidacademymovieproject.R
 import com.example.androidacademymovieproject.model.Movie
 
-class MovieAdapter(private val data: List<Movie>, private val clickedCard: (item: Movie) -> Unit):
+class MovieAdapter(private val data: List<Movie>, private val clickedCard: (itemIt: Int) -> Unit):
     RecyclerView.Adapter<MovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {

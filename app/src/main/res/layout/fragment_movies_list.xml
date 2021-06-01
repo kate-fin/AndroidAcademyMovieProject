@@ -2,10 +2,9 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorMovieBack">
+    android:background="@color/movie_back">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -33,7 +32,7 @@
                 android:layout_marginStart="@dimen/spacing_2x"
                 android:layout_marginTop="@dimen/spacing_2_5x"
                 android:text="@string/movies_list"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size_sub_title"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -43,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:paddingBottom="@dimen/bottom_space"
+            android:layout_marginEnd="@dimen/spacing_3_5x"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movies_list_header">
 

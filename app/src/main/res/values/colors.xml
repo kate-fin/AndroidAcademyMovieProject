@@ -3,28 +3,23 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorLightYellow">#FFFEB9</color>
-    <color name="colorGrey">#353438</color>
-    <color name="colorLightGrey">#B8B8B8</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorTextTitle">#ECECEC</color>
-    <color name="colorDarkBlue">#231C45</color>
-    <color name="colorMovieBack">#191926</color>
-    <color name="colorSmallText">#6D6D80</color>
-    <color name="colorDescriptionGenre">#FF3466</color>
-    <color name="colorCastName">#D8D8D8</color>
+    <color name="text_title">#ECECEC</color>
+    <color name="movie_back">#191926</color>
+    <color name="small_text">#6D6D80</color>
+    <color name="description_genre">#FF3466</color>
+    <color name="cast_name">#D8D8D8</color>
 
 
-    <color name="color_white">#FFFFFF</color>
-    <color name="color_white_transparent">#BFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
+<!--    <color name="color_white_transparent">#BFFFFFFF</color>-->
 
-    <color name="gray_light">#D8D8D8</color>
-    <color name="gray_dark">#6D6D80</color>
+<!--    <color name="gray_light">#D8D8D8</color>-->
+<!--    <color name="gray_dark">#6D6D80</color>-->
 
     <color name="pink_light">#FF3365</color>
-    <color name="pink_dark">#FF3466</color>
+<!--    <color name="pink_dark">#FF3466</color>-->
 
-    <color name="background_color">#191926</color>
-    <color name="background_card_color">#222232</color>
-    <color name="stroke_card_color">#636375</color>
+    <color name="background_color">#11111B</color>
+<!--    <color name="background_card_color">#222232</color>-->
+<!--    <color name="stroke_card_color">#636375</color>-->
 </resources>

@@ -28,7 +28,7 @@ class MoviesListFragment : Fragment() {
     private val viewModel: MoviesListViewModel by viewModels {
         MoviesListViewModelFactory((requireActivity() as MovieRepositoryProvider).provideMovieRepository())
     }
-    
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ClickListener) {

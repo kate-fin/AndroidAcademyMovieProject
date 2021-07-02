@@ -1,15 +1,20 @@
 package com.example.androidacademymovieproject
 
+import MovieRepositoryProvider
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import com.example.androidacademymovieproject.model.Movie
-import com.example.androidacademymovieproject.view.FragmentMovieDetails
-import com.example.androidacademymovieproject.view.FragmentMoviesList
+import com.example.androidacademymovieproject.data.JsonMovieRepository
+import com.example.androidacademymovieproject.data.MovieRepository
+import com.example.androidacademymovieproject.features.movie_details.MovieDetailsFragment
+import com.example.androidacademymovieproject.features.movies_list.MoviesListFragment
 
-class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
-    FragmentMovieDetails.ClickListener
+class MainActivity : AppCompatActivity(), MoviesListFragment.ClickListener,
+    MovieDetailsFragment.ClickListener
+,MovieRepositoryProvider
 {
+    private val jsonMovieRepository = JsonMovieRepository(this)
+    override fun provideMovieRepository(): MovieRepository = jsonMovieRepository
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +31,10 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
             .apply {
                 replace(
                     R.id.main_frame_layout,
-                    FragmentMoviesList(),
-                    FragmentMoviesList::class.java.simpleName
+                    MoviesListFragment(),
+                    MoviesListFragment::class.java.simpleName
                 )
-                    .addToBackStack("${FragmentMoviesList()}")
+                    .addToBackStack("${MoviesListFragment()}")
                     .commit()
             }
     }
@@ -39,10 +44,10 @@ class MainActivity : AppCompatActivity(), FragmentMoviesList.ClickListener,
             .apply {
                 replace(
                     R.id.main_frame_layout,
-                    FragmentMovieDetails.newInstance(movieId),
-                    FragmentMovieDetails::class.java.simpleName
+                    MovieDetailsFragment.newInstance(movieId),
+                    MovieDetailsFragment::class.java.simpleName
                 )
-                    .addToBackStack("${FragmentMovieDetails()}")
+                    .addToBackStack("${MovieDetailsFragment()}")
                     .commit()
             }
     }

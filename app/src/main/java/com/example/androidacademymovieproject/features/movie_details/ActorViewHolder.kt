@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.presenter
+package com.example.androidacademymovieproject.features.movie_details
 
 import android.view.View
 import android.widget.ImageView

@@ -1,7 +1,6 @@
-package com.example.androidacademymovieproject.view
+package com.example.androidacademymovieproject.features.movie_details
 
 import android.content.Context
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,23 +10,38 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.androidacademymovieproject.R
 import com.example.androidacademymovieproject.data.JsonMovieRepository
+import com.example.androidacademymovieproject.data.MovieRepository
+import com.example.androidacademymovieproject.features.movies_list.MovieAdapter
 import com.example.androidacademymovieproject.model.Movie
-import com.example.androidacademymovieproject.presenter.ActorAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FragmentMovieDetails : Fragment() {
+class MovieDetailsFragment : Fragment() {
 
     private var clickListener: ClickListener? = null
     private val ioScope = CoroutineScope(Dispatchers.IO)
     private val uiScope = CoroutineScope(Dispatchers.Main)
+
+    val viewModel: MovieDetailsViewModel by viewModels {
+        MovieDetailsViewModelFactory(
+            JsonMovieRepository(requireActivity())
+        )
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ClickListener) {
+            clickListener = context
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,13 +64,13 @@ class FragmentMovieDetails : Fragment() {
 
     private fun actionWithMovie(id: Int, recyclerView: RecyclerView) {
         lifecycleScope.launch {//ioScope
-            val movie = JsonMovieRepository(requireContext()).loadMovie(id)
-            if (movie != null) {
-                fillData(movie)
-                recyclerView.adapter = ActorAdapter(movie.actors)
-            } else {
-                showErrorToast()
-            }
+            viewModel.loadMovie(id)
+            viewModel.movieLiveData.observe(viewLifecycleOwner, { movie ->
+                movie?.let {
+                    fillData(movie)
+                    recyclerView.adapter = ActorAdapter(movie.actors)
+                } ?: showErrorToast()
+            })
         }
     }
 
@@ -69,7 +83,7 @@ class FragmentMovieDetails : Fragment() {
         }
     }
 
-    private fun showBackPic(picUrl: String){
+    private fun showBackPic(picUrl: String) {
         lifecycleScope.launch {//uiScope
             view?.let {
                 view?.findViewById<ImageView>(R.id.pic_movie_back)?.let { it1 ->
@@ -97,21 +111,14 @@ class FragmentMovieDetails : Fragment() {
             view?.findViewById(R.id.star4),
             view?.findViewById(R.id.star5)
         )
-        for (i in 0 until movie.countStars){
+        for (i in 0 until movie.countStars) {
             stars[i]?.setImageResource(R.drawable.pic_red_star_icon)
         }
-        if(movie.actors.isEmpty()){
+        if (movie.actors.isEmpty()) {
             view?.findViewById<TextView>(R.id.cast)?.visibility = View.GONE
         }
     }
 
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is ClickListener) {
-            clickListener = context
-        }
-    }
 
     override fun onDetach() {
         super.onDetach()
@@ -124,7 +131,7 @@ class FragmentMovieDetails : Fragment() {
 
     companion object {
         private const val DATA_KEY = "MOVIE_ID"
-        fun newInstance(movieId: Int) = FragmentMovieDetails().also {
+        fun newInstance(movieId: Int) = MovieDetailsFragment().also {
             val args = bundleOf(
                 DATA_KEY to movieId
             )

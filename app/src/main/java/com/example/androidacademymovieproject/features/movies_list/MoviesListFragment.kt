@@ -1,5 +1,6 @@
-package com.example.androidacademymovieproject.view
+package com.example.androidacademymovieproject.features.movies_list
 
+import MovieRepositoryProvider
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -7,22 +8,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.androidacademymovieproject.model.Data
 import com.example.androidacademymovieproject.R
 import com.example.androidacademymovieproject.data.JsonMovieRepository
-import com.example.androidacademymovieproject.model.Movie
-import com.example.androidacademymovieproject.presenter.MovieAdapter
+import com.example.androidacademymovieproject.data.MovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class FragmentMoviesList : Fragment() {
+class MoviesListFragment : Fragment() {
 
     var clickListener: ClickListener? = null
     private val ioScope = CoroutineScope(Dispatchers.IO)
+
+    private val viewModel: MoviesListViewModel by viewModels {
+        MoviesListViewModelFactory((requireActivity() as MovieRepositoryProvider).provideMovieRepository())
+    }
+    
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ClickListener) {
+            clickListener = context
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,18 +52,16 @@ class FragmentMoviesList : Fragment() {
 
     private fun loadDataToAdapter(recyclerView: RecyclerView) {
         lifecycleScope.launch {//ioScope
-            val movies = JsonMovieRepository(requireContext()).loadMovies()
-            recyclerView.adapter =
-                MovieAdapter(movies) { movie ->
-                    clickListener?.showMovieDetails(movie)
-                }
-        }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is ClickListener) {
-            clickListener = context
+            viewModel.loadMovies()
+            viewModel.moviesListLiveData.observe(viewLifecycleOwner, {
+                movies ->
+                recyclerView.adapter =
+                    movies?.let {
+                        MovieAdapter(it) { movie ->
+                            clickListener?.showMovieDetails(movie)
+                        }
+                    }
+            })
         }
     }
 

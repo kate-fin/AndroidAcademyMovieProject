@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.presenter
+package com.example.androidacademymovieproject.features.movies_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

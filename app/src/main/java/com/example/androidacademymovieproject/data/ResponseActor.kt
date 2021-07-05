@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ActorResponse(
+data class ResponseActor(
 
     val id: Int,
     val cast: List <JsonActor>,
@@ -13,7 +13,6 @@ data class ActorResponse(
 
 @Serializable
 data class Crew (
-
     var adult : Boolean,
     var gender : Int,
     var id : Int,

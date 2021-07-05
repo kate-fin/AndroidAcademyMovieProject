@@ -35,7 +35,6 @@ data class JsonMovie(
     //val runtime: Int,
     @SerialName("genre_ids")
     val genreIds: List<Int>,
-    //val actors: List<Int>,
     @SerialName("vote_average")
     val ratings: Float,
     @SerialName("vote_count")

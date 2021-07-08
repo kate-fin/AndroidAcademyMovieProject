@@ -1,26 +1,48 @@
 package com.example.androidacademymovieproject
 
-import MovieRepositoryProvider
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.androidacademymovieproject.data.JsonMovieRepository
+import android.util.Log
 import com.example.androidacademymovieproject.data.MovieRepository
-import com.example.androidacademymovieproject.features.movie_details.MovieDetailsFragment
-import com.example.androidacademymovieproject.features.movies_list.MoviesListFragment
+import com.example.androidacademymovieproject.data.MovieRepositoryImpl
+import com.example.androidacademymovieproject.data.NetworkRepositoryImpl
+import com.example.androidacademymovieproject.data.database.DbRepository
+import com.example.androidacademymovieproject.data.database.DbRepositoryImpl
+import com.example.androidacademymovieproject.data.database.MovieDatabase
+import com.example.androidacademymovieproject.data.network.NetworkRepository
+import com.example.androidacademymovieproject.features.movie_details.view.MovieDetailsFragment
+import com.example.androidacademymovieproject.features.movies_list.view.MoviesListFragment
 
-class MainActivity : AppCompatActivity(), MoviesListFragment.ClickListener,
-    MovieDetailsFragment.ClickListener
-,MovieRepositoryProvider
-{
-    private val jsonMovieRepository = JsonMovieRepository(this)
-    override fun provideMovieRepository(): MovieRepository = jsonMovieRepository
+class MainActivity : AppCompatActivity(),
+    MoviesListFragment.ClickListener,
+    MovieDetailsFragment.ClickListener,
+    MovieRepositoryProvider {
 
+    private val remoteRepository: NetworkRepository = NetworkRepositoryImpl()
+
+    //    private val localRepository: DbRepository = DbRepositoryImpl(MovieApp.db)
+    lateinit var movieRepository: MovieRepository //= MovieRepositoryImpl(localRepository,
+//     remoteRepository)
+
+    override fun provideMovieRepository(): MovieRepository {
+        println("5")
+        return movieRepository
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d("MY MESS", "I STARTED HERE!!!!!!!!!!!!!!!")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-                if (savedInstanceState == null) {
+        println("1")
+        val db = MovieDatabase.getInstance(this)
+        println("2")
+        val localRepository: DbRepository = DbRepositoryImpl(db)
+        println("3")
+        movieRepository = MovieRepositoryImpl(localRepository, remoteRepository)
+        println("4")
+
+        if (savedInstanceState == null) {
             showMoviesList()
         }
 

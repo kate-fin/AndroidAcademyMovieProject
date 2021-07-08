@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.features.movie_details
+package com.example.androidacademymovieproject.features.movie_details.view_model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

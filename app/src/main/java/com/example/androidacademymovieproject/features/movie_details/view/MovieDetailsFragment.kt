@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.features.movie_details
+package com.example.androidacademymovieproject.features.movie_details.view
 
 import android.content.Context
 import android.os.Bundle
@@ -15,24 +15,21 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.androidacademymovieproject.MovieRepositoryProvider
 import com.example.androidacademymovieproject.R
-import com.example.androidacademymovieproject.data.JsonMovieRepository
-import com.example.androidacademymovieproject.data.MovieRepository
-import com.example.androidacademymovieproject.features.movies_list.MovieAdapter
+import com.example.androidacademymovieproject.data.NetworkRepositoryImpl
+import com.example.androidacademymovieproject.features.movie_details.view_model.MovieDetailsViewModel
+import com.example.androidacademymovieproject.features.movie_details.view_model.MovieDetailsViewModelFactory
 import com.example.androidacademymovieproject.model.Movie
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MovieDetailsFragment : Fragment() {
 
     private var clickListener: ClickListener? = null
-    private val ioScope = CoroutineScope(Dispatchers.IO)
-    private val uiScope = CoroutineScope(Dispatchers.Main)
 
-    val viewModel: MovieDetailsViewModel by viewModels {
+    private val viewModel: MovieDetailsViewModel by viewModels {
         MovieDetailsViewModelFactory(
-            JsonMovieRepository(requireActivity())
+            (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
         )
     }
 

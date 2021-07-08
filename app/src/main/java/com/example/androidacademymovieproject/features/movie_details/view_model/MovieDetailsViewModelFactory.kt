@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.features.movie_details
+package com.example.androidacademymovieproject.features.movie_details.view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

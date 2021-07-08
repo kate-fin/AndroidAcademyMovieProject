@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.features.movies_list
+package com.example.androidacademymovieproject.features.movies_list.view
 
 import android.content.res.ColorStateList
 import android.view.View

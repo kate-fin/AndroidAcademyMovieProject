@@ -1,4 +1,4 @@
-package com.example.androidacademymovieproject.data
+package com.example.androidacademymovieproject.data.network.model
 
 import kotlinx.serialization.Serializable
 

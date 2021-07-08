@@ -1,6 +1,6 @@
-package com.example.androidacademymovieproject.features.movies_list
+package com.example.androidacademymovieproject.features.movies_list.view
 
-import MovieRepositoryProvider
+import com.example.androidacademymovieproject.MovieRepositoryProvider
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -9,24 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidacademymovieproject.R
-import com.example.androidacademymovieproject.data.JsonMovieRepository
-import com.example.androidacademymovieproject.data.MovieRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import com.example.androidacademymovieproject.features.movies_list.view_model.MoviesListViewModel
+import com.example.androidacademymovieproject.features.movies_list.view_model.MoviesListViewModelFactory
 import kotlinx.coroutines.launch
 
 class MoviesListFragment : Fragment() {
 
     var clickListener: ClickListener? = null
-    private val ioScope = CoroutineScope(Dispatchers.IO)
 
     private val viewModel: MoviesListViewModel by viewModels {
         MoviesListViewModelFactory((requireActivity() as MovieRepositoryProvider).provideMovieRepository())
+
     }
 
     override fun onAttach(context: Context) {
@@ -53,8 +50,7 @@ class MoviesListFragment : Fragment() {
     private fun loadDataToAdapter(recyclerView: RecyclerView) {
         lifecycleScope.launch {//ioScope
             viewModel.loadMovies()
-            viewModel.moviesListLiveData.observe(viewLifecycleOwner, {
-                movies ->
+            viewModel.moviesListLiveData.observe(viewLifecycleOwner, { movies ->
                 recyclerView.adapter =
                     movies?.let {
                         MovieAdapter(it) { movie ->
